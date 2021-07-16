@@ -51,3 +51,10 @@ class LibroModels:
         cursor.execute(sql,val)
         conn.commit()
         return "Listo"
+
+    def deleteLibro(self,id):
+        sql = "DELETE FROM Libro WHERE ID_Libro = %d"
+        val = (id,)
+        cursor.execute(sql,val)
+        conn.commit()
+        return "listo"

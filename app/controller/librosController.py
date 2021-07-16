@@ -31,3 +31,9 @@ def actualizar_bibloteca(id):
         return redirect(url_for('libro_bp.todolosLibros'))
         
     return render_template('libros/updateLibro.html',datos=datos)
+
+def deleteLibro(id):
+    if request.method == 'POST':
+        LibroModels().deleteLibro(id)
+        return redirect(url_for('libro_bp.todolosLibros'))
+    return render_template('libros/deleteLibro.html')
