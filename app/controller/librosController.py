@@ -22,7 +22,7 @@ def subir_bibloteca():
     return render_template('libros/subirLibro.html',ejemplar=datos)
 
 def actualizar_bibloteca(id):
-    datos = LibroModels().getUnLibro(id)
+    datos = LibroModels(id).getUnLibro()
 
     if request.method == 'POST':
         titulo = request.form.get('titulo')
@@ -33,7 +33,8 @@ def actualizar_bibloteca(id):
     return render_template('libros/updateLibro.html',datos=datos)
 
 def deleteLibro(id):
+    datos = LibroModels(id).getUnLibro()
     if request.method == 'POST':
         LibroModels(id).deleteLibro()
         return redirect(url_for('libro_bp.todolosLibros'))
-    return render_template('libros/deleteLibro.html')
+    return render_template('libros/deleteLibro.html', datos=datos)

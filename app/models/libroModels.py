@@ -37,8 +37,8 @@ class LibroModels:
 
         return datos
     
-    def getUnLibro(self, id):
-        cursor.execute(f'select Genero,Titulo FROM Libro WHERE ID_Libro={id};')
+    def getUnLibro(self):
+        cursor.execute(f'select Genero,Titulo FROM Libro WHERE ID_Libro={self.__id_libro};')
         datos = []
         for d in cursor:
             datos.append(d)

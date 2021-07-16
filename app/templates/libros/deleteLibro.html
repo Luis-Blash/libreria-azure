@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 {%block title%}Bibloteca{% endblock %}
 {%block content%}
-<form method="POST">
-    <h3 style="text-align: center;">¿Seguro Eliminar?</h3>
+
+<form method="POST" style="text-align: center;">
+    <h2 style="text-align: center;">¿Seguro Eliminar?</h2>
+    <hr>
+    <h3>{{datos[0]['Titulo']}}</h3>
+    <h3>{{datos[0]['Genero']}}</h3>
+    <br>
     <button type="submit" class="btn btn-danger">Eliminar</button>
 </form>
 {% endblock %}
