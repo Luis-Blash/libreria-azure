@@ -5,8 +5,15 @@ cursor = conn.cursor(as_dict=True)
 
 class LibroModels:
     __id_libro = ''
+    __titulo = ''
     __genero = ''
     __id_ejemplar=''
+
+    def __init__(self, id_libro='',titulo='', genero='', id_ejemplar=''):
+        self.__id_libro = id_libro
+        self.__genero = genero
+        self.__titulo = titulo
+        self.__id_ejemplar = id_ejemplar
 
     def __getIdlibros(self):
         cursor.execute('SELECT ID_Libro FROM Libro')
@@ -37,24 +44,24 @@ class LibroModels:
             datos.append(d)
         return datos
 
-    def inserLibro(self,titulo,genero,id_ejemplar): 
+    def inserLibro(self): 
         id = self.__getIdlibros()
         sql = "INSERT INTO Libro (ID_Libro, Genero, Titulo, ID_Ejemplar) VALUES (%d,%s, %s,%d)"
-        val = (id,titulo, genero,id_ejemplar)
+        val = (id,self.__titulo, self.__genero,self.__id_ejemplar)
         cursor.execute(sql, val)
         conn.commit()
         return "Listo"
 
-    def updateLibro(self,titulo,genero,id):
+    def updateLibro(self):
         sql = "UPDATE Libro SET Titulo = %s ,Genero = %s WHERE ID_Libro = %d"
-        val = (titulo,genero,id)
+        val = (self.__titulo,self.__genero,self.__id_libro)
         cursor.execute(sql,val)
         conn.commit()
         return "Listo"
 
-    def deleteLibro(self,id):
+    def deleteLibro(self):
         sql = "DELETE FROM Libro WHERE ID_Libro = %d"
-        val = (id,)
+        val = (self.__id_libro,)
         cursor.execute(sql,val)
         conn.commit()
         return "listo"

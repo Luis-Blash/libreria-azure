@@ -16,7 +16,7 @@ def subir_bibloteca():
         titulo = request.form.get('titulo')
         genero = request.form.get('genero')
         ejemplar = request.form.get('ejemplar')
-        LibroModels().inserLibro(titulo, genero, ejemplar)
+        LibroModels('',titulo,genero,ejemplar).inserLibro()
         return redirect(url_for('libro_bp.todolosLibros'))
         
     return render_template('libros/subirLibro.html',ejemplar=datos)
@@ -27,13 +27,13 @@ def actualizar_bibloteca(id):
     if request.method == 'POST':
         titulo = request.form.get('titulo')
         genero = request.form.get('genero')
-        LibroModels().updateLibro(titulo,genero,id)
+        LibroModels(id,titulo,genero).updateLibro()
         return redirect(url_for('libro_bp.todolosLibros'))
         
     return render_template('libros/updateLibro.html',datos=datos)
 
 def deleteLibro(id):
     if request.method == 'POST':
-        LibroModels().deleteLibro(id)
+        LibroModels(id).deleteLibro()
         return redirect(url_for('libro_bp.todolosLibros'))
     return render_template('libros/deleteLibro.html')
