@@ -6,8 +6,8 @@ def connBase():
     password='TeseEq01'
     try:
         conn = pymssql.connect(server, user, password, "biblioteca")
-    except:
-        print("Fallo")
+    except UnboundLocalError:
+        return "Not found connection"
     return conn
 
 from .libroModels import LibroModels
