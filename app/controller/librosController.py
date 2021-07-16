@@ -8,7 +8,10 @@ def todolosLibros():
 
 def subir_bibloteca():
     datos = EjemplarModels().getTodosEjemplares()
-    titulo = request.form.get('titulo')
-    ejemplar = request.form.get('ejemplar')
-    print(ejemplar)
+    if request.method == 'POST':
+        titulo = request.form.get('titulo')
+        genero = request.form.get('genero')
+        ejemplar = request.form.get('ejemplar')
+        insertar = LibroModels().inserLibro(titulo, genero, ejemplar)
+        
     return render_template('libros/subirLibro.html',ejemplar=datos)
