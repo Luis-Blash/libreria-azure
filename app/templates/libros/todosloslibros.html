@@ -25,4 +25,19 @@
         </tr>
         {%endfor%}
 </table>
+<h1>Otra Base</h1>
+<table  class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Titulo</th>
+            <th>Genero</th>
+        </tr>
+    </thead>
+        {%for individuales in otrabase%}
+        <tr>
+            <td>{{individuales['Titulo']}}</td>
+            <td>{{individuales['Genero']}}</td>
+        </tr>
+        {%endfor%}
+</table>
 {% endblock %}

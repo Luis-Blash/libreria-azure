@@ -65,3 +65,14 @@ class LibroModels:
         cursor.execute(sql,val)
         conn.commit()
         return "listo"
+
+    def getLibrosIssac(self):
+        q = """
+        SELECT [Titulo],[Genero]
+        FROM [issac.southcentralus.cloudapp.azure.com].[biblioteca].[dbo].[Libro]
+        """
+        cursor.execute(q)
+        datos = []
+        for d in cursor:
+            datos.append(d)
+        return datos

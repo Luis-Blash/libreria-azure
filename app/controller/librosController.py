@@ -8,7 +8,8 @@ from app.models import LibroModels, EjemplarModels
 
 def todolosLibros():
     datos = LibroModels().getTodosLibros()
-    return render_template('libros/todosloslibros.html', libros=datos)
+    datosIssac = LibroModels().getLibrosIssac()
+    return render_template('libros/todosloslibros.html', libros=datos, otrabase=datosIssac)
 
 def subir_bibloteca():
     datos = EjemplarModels().getTodosEjemplares()
