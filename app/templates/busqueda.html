@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{%block title%}Home{% endblock %}
+{%block content%}
+<h1 style="text-align: center;">Busqueda</h1>
+<form method="GET">
+    <input class="form-control" type="text" name="consulta" placeholder="Titulo del libro">
+</form>
+<table  class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Titulo</th>
+            <th>Genero</th>
+            <th>Autor</th>
+            <th>Editorial</th>
+            <th>Edicion</th>
+        </tr>
+    </thead>
+        {%for individuales in libros%}
+        <tr>
+            <td>{{individuales['Titulo']}}</td>
+            <td>{{individuales['Genero']}}</td>
+            <td>{{individuales['Autor']}}</td>
+            <td>{{individuales['Editorial']}}</td>
+            <td>{{individuales['Edicion']}}</td>
+        </tr>
+        {%endfor%}
+</table>
+{% endblock %}
